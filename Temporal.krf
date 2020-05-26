@@ -1,0 +1,109 @@
+(in-microtheory Interaction-ManagerMt)
+
+(isa TemporalQuestionsMt Microtheory)
+
+;;; Starting and Ending it
+;;;
+;;; Temporal Questions is implemented on top of the Companion
+;;; Interaction Manager domain.  It uses narrative function 
+;;; handlers to extract time-specific semantics from general processing.
+;;; These commands in the Commands tab of the Companion WebUI do the trick:
+;;; (achieve :receiver interaction-manager :content (startTemporalQuestions)) to start
+;;; (achieve :receiver interaction-manager :content (endTemporalQuestions)) to end
+
+(isa temporalQuestionsActive Predicate)
+(arity temporalQuestionsActive 0)
+(comment temporalQuestionsActive 
+  "(temporalQuestionsActive) holds when the Interaction Manager is being used to
+   implement the Temporal Questions.")
+
+(isa startTemporalQuestions ComplexActionPredicate)
+(arity startTemporalQuestions 0)
+(comment startTemporalQuestions
+  "(startTemporalQuestions) tweaks the Interaction Manager to use semantic 
+   interpretation methods that implement the Temporal Questions.")
+
+(preconditionForMethod 
+ (true)
+ (methodForAction
+  (startTemporalQuestions)
+  (actionSequence
+   (TheList 
+    (doRecordMembers
+     (TheSet
+      (ist-Information Interaction-ManagerMt
+        (<== (preferInContext
+              (checkUnderstanding ?context ?sid
+                                  ?discourse)
+              ?seq1 ?seq2)
+             (containsPattern (checkITUnderstanding ?context ?sid ?discourse)
+                              ?seq1)))
+      (temporalQuestionsActive)
+      (genlMt Interaction-ManagerMt TemporalQuestionsMt)
+      (doAnnounce "Starting Temporal Questions")))))))
+
+(isa endTemporalQuestions ComplexActionPredicate)
+(arity endTemporalQuestions 0)
+(comment endTemporalQuestions
+  "(endTemporalQuestions) tweaks the Interaction Manager to use semantic 
+   interpretation methods that implement the Temporal Questions.")
+
+(preconditionForMethod
+ (true)
+ (methodForAction
+  (endTemporalQuestions)
+  (actionSequence
+   (TheList 
+    (doForgetMembers
+     (TheSet
+      (ist-Information Interaction-ManagerMt
+        (<== (preferInContext
+              (checkUnderstanding ?context ?sid
+                                  ?discourse)
+              ?seq1 ?seq2)
+             (containsPattern (checkTQUnderstanding ?context ?sid ?discourse)
+                              ?seq1)))
+      (temporalQuestionsActive)
+      (genlMt Interaction-ManagerMt TemporalQuestionsMt)
+      (doAnnounce "Shutting down Temporal Questions")))
+    ))))
+
+(isa checkTQUnderstanding ComplexActionPredicate)
+(arity checkTQUnderstanding 3)
+(arg1Isa checkTQUnderstanding Microtheory)
+(arg2Isa checkTQUnderstanding CycLTerm)
+(arg3Isa checkTQUnderstanding Microtheory)
+(comment checkTQUnderstanding
+  "(checkTQUnderstanding ?context ?sid ?discourse) does the semantic analysis
+   needed to recognize dialogue acts and domain semantics for the Temporal Questions.")
+
+;;; Dispatch to checkTQUnderstanding if the game is active.
+(preconditionForMethod 
+ (temporalQuestionsActive)
+ (methodForAction
+  (checkUnderstanding ?context ?sid ?discourse)
+  (actionSequence
+   (TheList
+    (doAnnounce "Using Temporal Questions methods.")
+    (checkTQUnderstanding ?context ?sid ?discourse)))))
+
+(preconditionForMethod 
+ (and (temporalQuestionsActive)
+      (outsourcedOnly (currentDiscourseId ?d-id))
+      (ist-Information (DiscourseCaseFn ?d-id)
+        (sentenceInDiscourse ?sid ?s-index ?wordslist))
+      (evaluate ?next-index (PlusFn 1 ?s-index)))
+ (methodForAction 
+  (checkTQUnderstanding ?context ?sid ?discourse)
+  (actionSequence
+   (TheList 
+    (doAnnounce "Running Temporal Questions narrative functions.")
+    (doEADiscourseInterpretation
+     TemporalQuestions-NFMt ?s-index ?next-index)))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; End of Code
