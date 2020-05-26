@@ -1,19 +1,19 @@
 ;; Who teaches cs 348 in the fall quarter of 2020?
 ;; What time is cs 348 in the fall quarter of 2020?
 
-;; Fall - Season
 ;; Year - 2020
-;; teaches -> Instructor
-;; cs 348 - course
-;; quarter - AcademicQuarter
+;; "teaches" Check if sentence has "teaches" which indicates we are looking for an instructor
+;; cs 348 - course -> (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence)
+;; fall quarter - FallQuarterFn
 
 
 (in-microtheory TemporalQuestions-NFMt)
 
+
+(queryForInterpretation 0 
+  (narrativeFunction (PresentationEventFn :REPLACE-SID ?event-id) ?instructor WhoTeachesCourseQuarter))
+
 (isa WhoTeachesCourseQuarter Collection)
-(genls WhoTeachesCourseQuarter AcademicTerm)
-(genls WhoTeachesCourseQuarter AcademicYear)
-(genls WhoTeachesCourseQuarter AcademicQuarter)
 (comment WhoTeachesCourseQuarter
   "WhoTeachesCourseQuarter indicates that the sentence is
   asking for who the instructor is of a course for a given quarter and year")
@@ -34,109 +34,119 @@
       ?event-id IBTGeneration
       (TheSet (groundExpression ?instructor))))
 
-(<== (introducesInstructor ?sid
-                                     ?instructor)
+(<== (introducesInstructor ?sid ?instructor)
      (ist-Information (DrsCaseFn ?sid)
        (discourseCaseForDrs ?dcase ?sid))
      (ist-Information ?dcase (isaPossibleCaseForSentence ?sdrs-id ?sid))
-     (sentenceIndicatesInstructor ?sdrs-id ?teach)
-     (sentenceIndicatesCourse ?sdrs-id ?course)
-     (sentenceIndicatesAcademicQuarter ?sdrs-id ?quarter)
-     (sentenceIndicatesYear ?sdrs-id ?year)
-     (sentenceOffersInstructor ?sdrs-id ?teach ?course ?quarter ?year ?instructor))
+     (doRecord (doAnnounce "CAME HERE" nil))
+     (sentenceIndicatesTeaching ?sdrs-id ?teach)
+     (sentenceInstructorToCourse ?sdrs-id ?teach ?course)
+     (sentenceIndicatesSeasonQuarter ?sdrs-id ?quarter)
+     (sentenceIndicatesNumber ?sdrs-id ?year)
+     (sentenceOffersInstructor ?course ?quarter ?year ?instructor)
+     (doAnnounce "The instructor is: " nil))
 
+(isa sentenceInstructorToCourse Predicate)
+(arity sentenceInstructorToCourse 3)
+(arg1Isa sentenceInstructorToCourse CyclTerm)
+(arg2Isa sentenceInstructorToCourse Thing)
+(arg3Isa sentenceInstructorToCourse Thing)
+(comment sentenceInstructoToCourse "(sentenceInstructorToCourse ?sdrs-id ?teach-verb ?course) indicates
+that in sentence DRS ?sdrs-id, with verb indicating teaching of a topic ?teach-verb, 
+the course taught is NUClass-CS ?course.")
 
-;;; Looking for verbs that suggest a teaching ("teaches")
-(isa sentenceIndicatesInstructor Predicate)
-(arity sentenceIndicatesInstructor 2)
-(arg1Isa sentenceIndicatesInstructor CycLTerm)
-(arg2Isa sentenceIndicatesInstructor Thing)
-(comment sentenceIndicatesInstructor 
-  "(sentenceIndicatesInstructor ?sdrs-id ?teaching-verb) indicates that the sentences
- whose DRS is ?sdrs-id has a verb suggesting a course is being taught, ?teaching-verb")
-
-(<== (sentenceIndicatesInstructor ?sdrs-id ?teaching-verb)
+(<== (sentenceInstructorToCourse ?sdrs-id ?teach-verb ?course)
      (ist-Information (DrsCaseFn ?sdrs-id)
-       (isa ?teaching-verb Teaching)))
+      (eventTopic ?teach-verb ?course))
+     (isa ?course NUClass-CS))
 
 
-;;; Looking for noun that indicates AcademicQuarter ("quarter")
-(isa sentenceIndicatesAcademicQuarter Predicate)
-(arity sentenceIndicatesAcademicQuarter 2)
-(arg1Isa sentenceIndicatesAcademicQuarter CyclTerm)
-(arg2Isa sentenceIndicatesAcademicQuarter Thing)
-  "(sentenceIndicatesAcademicQuarter ?sdrs-id ?quarter) indicates that the sentences
- whose DRS is ?sdrs-id has a noun suggesting a AcademicQuarter, ?quarter")
 
- (<== (sentenceIndicatesAcademicQuarter ?sdrs-id ?quarter)
+(isa sentenceIndicatesTeaching Predicate)
+(arity sentenceIndicatesTeaching 2)
+(arg1Isa sentenceIndicatesTeaching CyclTerm)
+(arg2Isa sentenceIndicatesTeaching Thing)
+(comment sentenceIndicatesTeaching "(sentenceIndicatesTeaching ?sdrs-id ?teach-verb) indicates that
+the sentences who DRS is ?sdrs-id has a verb suggesting something being taught, ?teach-verb")
+
+(<== (sentenceIndicatesTeaching ?sdrs-id ?teach-verb)
      (ist-Information (DrsCaseFn ?sdrs-id)
-       (isa ?quarter AcademicQuarter)))
+       (isa ?teach-verb Teaching)))
 
 
-;;; Looking for noun that indicates course ("course")
-;;; Note: Want to take course title or shorthand ("cs 336")
-(isa sentenceIndicatesCSCourse Predicate)
-(arity sentenceIndicatesCSCourse 2)
-(arg1Isa sentenceIndicatesCSCourse CyclTerm)
-(arg2Isa sentenceIndicatesCSCourse Thing)
-  "(sentenceIndicatesCSCourse ?sdrs-id ?cscourse) indicates that the sentences
- whose DRS is ?sdrs-id has a noun suggesting a NUClass-CS, ?cscourse")
+(isa sentenceIndicatesNumber Predicate)
+(arity sentenceIndicatesNumber 2)
+(arg1Isa sentenceIndicatesNumber CyclTerm)
+(arg2Isa sentenceIndicatesNumber Thing)
+(comment sentenceIndicatesNumber "(sentenceIndicatesNumber ?sdrs-id ?number) indicates that
+the sentences who DRS is ?sdrs-id has a number suggesting a potential year, ?number")
 
- (<== (sentenceIndicatesCSCourse ?sdrs-id ?cscourse)
+(<== (sentenceIndicatesNumber ?sdrs-id ?number)
      (ist-Information (DrsCaseFn ?sdrs-id)
-       (isa ?cscourse NUClass-CS)))
+       (isa ?number Number-SP)))
 
-;;; Looking for number that indicates year ("2020")
-(isa sentenceIndicatesYear Predicate)
-(arity sentenceIndicatesYear 2)
-(arg1Isa sentenceIndicatesYear CyclTerm)
-(arg2Isa sentenceIndicatesYear Thing)
-  "(sentenceIndicatesYear ?sdrs-id ?year) indicates that the sentences
- whose DRS is ?sdrs-id has an integer suggesting a year, ?year")
 
- (<== (sentenceIndicatesYear ?sdrs-id ?year)
+(isa sentenceIndicatesSeasonQuarter Predicate)
+(arity sentenceIndicatesSeasonQuarter 2)
+(arg1Isa sentenceIndicatesSeasonQuarter CyclTerm)
+(arg2Isa sentenceIndicatesSeasonQuarter Thing)
+(comment sentenceIndicatesSeasonQuarter "(sentenceIndicatesSeasonQuarter ?sdrs-id ?quarter) indicates that
+the sentences who DRS is ?sdrs-id has a quarter suggesting a potential academicquarter (FallQuarterFn), ?quarter")
+
+(<== (sentenceIndicatesSeasonQuarter ?sdrs-id ?quarter)
      (ist-Information (DrsCaseFn ?sdrs-id)
-       (or (isa ?year Integer)
-           (isa ?year Number))))
+       (isa ?quarter FallQuarterFn)))
+
+(<== (sentenceIndicatesSeasonQuarter ?sdrs-id ?quarter)
+     (ist-Information (DrsCaseFn ?sdrs-id)
+       (isa ?quarter WinterQuarterFn)))
+
+(<== (sentenceIndicatesSeasonQuarter ?sdrs-id ?quarter)
+     (ist-Information (DrsCaseFn ?sdrs-id)
+       (isa ?quarter SpringQuarterFn)))
+
+(<== (sentenceIndicatesSeasonQuarter ?sdrs-id ?quarter)
+     (ist-Information (DrsCaseFn ?sdrs-id)
+       (isa ?quarter SummerQuarterFn)))
 
 
+;; Main function that returns the instructor with all given info
 (isa sentenceOffersInstructor Predicate)
-(arity sentenceOffersInstructor 6)
+(arity sentenceOffersInstructor 5)
 (arg1Isa sentenceOffersInstructor CycLTerm)
 (arg2Isa sentenceOffersInstructor Thing)
 (arg3Isa sentenceOffersInstructor Thing)
 (arg4Isa sentenceOffersInstructor Thing)
 (arg5Isa sentenceOffersInstructor Thing)
 (comment sentenceOffersInstructor
-  "(sentenceOffersInstructor ?sdrs-id ?teach ?course ?quarter ?year ?instructorGiven) 
-  indicates that in sentence DRS ?sdrs-id, with verb indicating something is being taught ?teach,
-  noun indicating a course ?course, noun indicating a quarter ?quarter, and a number indicating
-  a year ?year, the instructor given is ?instructorGiven.")
+  "(sentenceOffersInstructor ?course ?quarter ?year ?instructor) 
+  indicates that with a course, quarter, and year, there is a potential instructor")
 
-(<== (sentenceOffersInstructor ?sdrs-id ?teach ?course ?quarter ?year ?instructorGiven)
-     (ist-Information (DrsCaseFn ?sdrs-id)
-     (instructor ?teach ?instructorGiven)
-     (reasonableInstructor ?instructorGiven ?course ?quarter ?year))
+(<== (sentenceOffersInstructor ?course ?quarter ?year ?instructor)
+     ((courseInstructor (CourseOfferingFn ?course (?quarter
+      (AcademicYearFn NorthwesternUniversity (YearFn ?year)))) ?instructor)))
 
 
-(isa reasonableInstructor Predicate)
-(arity reasonableInstructor 4)
-(arg1Isa reasonableInstructor Thing)
-(arg2Isa reasonableInstructor NUClass-CS)
-(arg3Isa reasonableInstructor AcademicQuarter)
-(arg4Isa reasonableInstructor Number)
-(comment reasonableInstructor "(reasonableInstructor ?instructor ?course ?quarter ?year) holds when ?instructor is 
-an instructor for the course.")
-
-(<== (reasonableInstructor ?instructor ?course ?quarter ?year)
-	(kbOnly
-	 (useTransitiveInference
-	  (ist-Information UniversalVocabularyMt
-	   (isa (courseInstructor (CourseOfferingFn ?course (?quarter (AcademicYearFn NorthwesternUniversity (YearFn ?year))))) ?instructor)))))
 
 
-;; Still in the works to figure out how
-;; To get it to pick up a CS course
-;; (in-microtheory FrameNetSemTransMt)
-;; (FNNounSemtrans (TheList) Course-TheWord (and (isa :NOUN AcademicTerm))
-;;  (frame FN_Misc) (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+;; Semantic Noun Translations
+(in-microtheory FrameNetSemTransMt)
+
+(FNNounSemtrans (TheList fall) Quarter-TheWord
+  (and (isa NOUN FallQuarterFn)) (frame FN_Misc)
+    (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+
+(FNNounSemtrans (TheList winter) Quarter-TheWord
+  (and (isa NOUN WinterQuarterFn)) (frame FN_Misc)
+    (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+
+(FNNounSemtrans (TheList spring) Quarter-TheWord
+  (and (isa NOUN SpringQuarterFn)) (frame FN_Misc)
+    (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+
+(FNNounSemtrans (TheList summer) Quarter-TheWord
+  (and (isa NOUN SummerQuarterFn)) (frame FN_Misc)
+    (bindingTemplate (TheList)) (groupPatterns (TheSet)))
