@@ -36,7 +36,7 @@
               (checkUnderstanding ?context ?sid
                                   ?discourse)
               ?seq1 ?seq2)
-             (containsPattern (checkITUnderstanding ?context ?sid ?discourse)
+             (containsPattern (checkTQUnderstanding ?context ?sid ?discourse)
                               ?seq1)))
       (temporalQuestionsActive)
       (genlMt Interaction-ManagerMt TemporalQuestionsMt)
