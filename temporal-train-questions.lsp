@@ -73,9 +73,6 @@
       ; "Who is teaching cs 325 in fall quarter 2020?"
       ; "Who teaches cs 325 in fall quarter of 2020?"
       "Who teaches cs 325 in fall 2020?"
-      "Do you know whether Professor Riesbeck is teaching cs 325 fall quarter of 2020?"
-      "Do you know whether Professor Worsley is teaching cs 330 fall quarter of 2020?"
-      "Do you know whether Professor Birnbaum is teaching cs 348 fall quarter of 2020?"
       ))
 
      
@@ -93,14 +90,12 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
       "Who is teaching cs 330 in spring 2020?"
-      ; "Who is teaching cs 330 in spring quarter of 2020?"
-      ; "Who is teaching cs 330 in spring quarter 2020?"
-      ; "Who teaches cs 330 in spring quarter of 2020?"
+      "Who is teaching cs 330 in spring quarter of 2020?"
+      "Who teaches cs 330 in spring quarter of 2020?"
       "Who teaches cs 330 in spring 2020?"
       "Who is teaching cs 348 spring 2020?"
-      ; "Who is teaching cs 348 spring quarter of 2020?"
-      ; "Who is teaching cs 348 spring quarter 2020?"
-      ; "Who teaches cs 348 in spring quarter of 2020?"
+      "Who is teaching cs 348 spring quarter of 2020?"
+      "Who teaches cs 348 in spring quarter of 2020?"
       "Who teaches cs 348 in spring 2020?"
       ))
 
@@ -118,9 +113,8 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
       "Who is teaching cs 349 in summer 2020?"
-      ; "Who is teaching cs 349 in summer quarter of 2020?"
-      ; "Who is teaching cs 349 in summer quarter 2020?"
-      ; "Who teaches cs 349 in summer quarter of 2020?"
+      "Who is teaching cs 349 in summer quarter of 2020?"
+      "Who teaches cs 349 in summer quarter of 2020?"
       "Who teaches cs 349 in summer 2020?"
       ))
 
@@ -140,14 +134,12 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
       "Who is teaching cs 330 in winter 2021?"
-      ; "Who is teaching cs 330 in winter quarter of 2021?"
-      ; "Who is teaching cs 330 in winter quarter 2021?"
-      ; "Who teaches cs 330 in winter quarter of 2021?"
+      "Who is teaching cs 330 in winter quarter of 2021?"
+      "Who teaches cs 330 in winter quarter of 2021?"
       "Who teaches cs 330 in winter 2021?"
       "Who is teaching cs 348 in winter 2021?"
-      ; "Who is teaching cs 348 in winter quarter of 2021?"
-      ; "Who is teaching cs 348 in winter quarter 2021?"
-      ; "Who teaches cs 348 in winter quarter of 2021?"
+      "Who is teaching cs 348 in winter quarter of 2021?"
+      "Who teaches cs 348 in winter quarter of 2021?"
       "Who teaches cs 348 in winter 2021?"
       ))
 
@@ -166,17 +158,18 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
      "When is cs 349 in spring 2020?"
-     ; "When is cs 349 in spring quarter of 2020?"
-     ; "When is cs 349 in spring quarter 2020?"
+     "When is cs 349 in spring quarter of 2020?"
      "What time is cs 349 in spring 2020?"
-     ; "What time is cs 349 in spring quarter of 2020?"
-     ; "What time is cs 333496 in spring quarter 2020?"
+     "What time is cs 349 in spring quarter of 2020?"
+
      "When is cs 348 in spring 2020?"
-     ; "When is cs 348 in spring quarter of 2020?"
-     ; "When is cs 348 in spring quarter 2020?"
+     "When is cs 348 in spring quarter of 2020?"
      "What time is cs 348 in spring 2020?"
-     ; "What time is cs 348 in spring quarter of 2020?"
-     ; "What time is cs 348 in spring quarter 2020?"
+     "What time is cs 348 in spring quarter of 2020?"
+
+     "What days are cs 348 in spring 2020?"
+     "Which days are cs 348 in spring 2020?"
+     "Do you know when cs 349 in spring 2020 is?"
       ))
 
      ;; Summer Quarter 2020 - Time
@@ -192,11 +185,13 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
      "When is cs 349 in summer 2020?"
-     ; "When is cs 349 in summer quarter of 2020?"
-     ; "When is cs 349 in summer quarter 2020?"
+     "When is cs 349 in summer quarter of 2020?"
      "What time is cs 349 in summer 2020?"
-     ; "What time is cs 349 in summer quarter of 2020?"
-     ; "What time is cs 349 in summer quarter 2020?"
+     "What time is cs 349 in summer quarter of 2020?"
+
+     "What days are cs 349 in summer 2020?"
+     "Which days are cs 349 in summer 2020?"
+     "Do you know when cs 349 in summer 2020 is?"
       ))
 
 
@@ -213,17 +208,18 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
      "When is cs 336 in fall 2020?"
-     ; "When is cs 336 in fall quarter of 2020?"
-     ; "When is cs 336 in fall quarter 2020?"
+     "When is cs 336 in fall quarter of 2020?"
      "What time is cs 336 in fall 2020?"
-     ; "What time is cs 336 in fall quarter of 2020?"
-     ; "What time is cs 336 in fall quarter 2020?"
+     "What time is cs 336 in fall quarter of 2020?"
+
      "When is cs 348 in fall 2020?"
-     ; "When is cs 348 in fall quarter of 2020?"
-     ; "When is cs 348 in fall quarter 2020?"
+     "When is cs 348 in fall quarter of 2020?"
      "What time is cs 348 in fall 2020?"
-     ; "What time is cs 348 in fall quarter of 2020?"
-     ; "What time is cs 348 in fall quarter 2020?"
+     "What time is cs 348 in fall quarter of 2020?"
+
+     "What days are cs 348 in fall 2020?"
+     "Which days are cs 348 in fall 2020?"
+     "Do you know when cs 336 in fall 2020 is?"
       ))
 
 
@@ -241,11 +237,18 @@
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
      "When is cs 348 in winter 2021?"
-     ; "When is cs 348 in winter quarter of 2021?"
-     ; "When is cs 348 in winter quarter 2021?"
+     "When is cs 348 in winter quarter of 2021?"
      "What time is cs 348 in winter 2021?"
-     ; "What time is cs 348 in winter quarter of 2021?"
-     ; "What time is cs 348 in winter quarter 2021?"
+     "What time is cs 348 in winter quarter of 2021?"
+
+     "When is cs 337 in winter 2021?"
+     "When is cs 337 in winter quarter of 2021?"
+     "What time is cs 337 in winter 2021?"
+     "What time is cs 337 in winter quarter of 2021?"
+
+     "What days are cs 348 in winter 2020?"
+     "Which days are cs 348 in winter 2020?"
+     "Do you know when cs 337 in winter 2020 is?"
       ))
   ))
 
