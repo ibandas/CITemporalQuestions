@@ -1,0 +1,87 @@
+(in-microtheory (CoursesMtFn (SpringQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019)))))
+
+(courseOfficeHoursString (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence
+    (SpringQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
+      "Tuesdays and Thursdays from 2:00 to 2:30")
+
+(courseOfficeHoursString (CourseOfferingFn COMP_SCI-349-MachineLearning
+    (SpringQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
+      "Mondays from 12:00 to 2:00")
+
+
+(in-microtheory (CoursesMtFn (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020)))))
+
+(courseOfficeHoursString (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence
+    (FallQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+      "Mondays and Wednesdays from 6:00 to 7:30")
+
+(courseOfficeHoursString (CourseOfferingFn COMP_SCI-349-MachineLearning
+    (WinterQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+      "Mondays from 5:00 to 6:00")
+
+
+(in-microtheory (CoursesMtFn (WinterQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020)))))
+
+(courseOfficeHoursString (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence
+    (WinterQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+      "Fridays from 5:00 to 6:00")
+
+(courseOfficeHoursString (CourseOfferingFn COMP_SCI-349-MachineLearning
+    (WinterQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+      "Wednesdays from 5:00 to 6:00")
+
+
+(in-microtheory CoursesForSocialModelingMt)
+
+(currentNUQuarter FallQuarterFn)
+
+(isa courseOfficeHoursString Predicate)
+(arity courseOfficeHoursString 2)
+(arg1Isa courseOfficeHoursString Course-Collegiate)
+(arg2Isa courseOfficeHoursString StringObject)
+(comment courseOfficeHoursString "(courseOfficeHoursString ?course ?string) says what time office hours were for ?course through ?string")
+
+(atomicAnalogyNat FallQuarterFn)
+(atomicAnalogyNat SpringQuarterFn)
+(atomicAnalogyNat WinterQuarterFn)
+(atomicAnalogyNat SummerQuarterFn)
+
+(isa currentNUQuarter-Temporal Predicate)
+(arity currentNUQuarter-Temporal 1)
+(arg1Isa currentNUQuarter-Temporal Function-Denotational)
+(comment currentNUQuarter-Temporal "(currentNUQuarter-Temporal ?quarter) says what the current quarter is")
+
+(currentNUQuarter-Temporal (SpringQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
+
+(isa nextNUQuarter-Temporal Predicate)
+(arity nextNUQuarter-Temporal 2)
+(arg1Isa nextNUQuarter-Temporal AcademicQuarter)
+(arg2Isa nextNUQuarter-Temporal AcademicQuarter)
+(comment nextNUQuarter-Temporal "(nextNUQuarter-Temporal ?current-quarter ?next-quarter) says what the next quarter is based off the current quarter")
+
+(nextNUQuarter-Temporal (SpringQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))) (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+(nextNUQuarter-Temporal (SummerQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))) (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+(nextNUQuarter-Temporal (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))) (WinterQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+
+
+;; Semantic Noun Translations
+(in-microtheory FrameNetSemTransMt)
+
+(FNNounSemtrans (TheList this) Quarter-TheWord
+  (and (isa :NOUN currentNUQuarter-Temporal)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+  (FNNounSemtrans (TheList next) Quarter-TheWord
+  (and (isa :NOUN nextNUQuarter-Temporal)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+(FNNounSemtrans (TheList office) Hour-TheWord
+  (and (isa :NOUN courseOfficeHoursString)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
