@@ -108,7 +108,7 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (SpringQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
                (courseTimeString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseTimeString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
@@ -126,7 +126,7 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (SummerQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
                (courseTimeString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseTimeString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
@@ -145,7 +145,7 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
                (courseTimeString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseTimeString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
@@ -163,7 +163,7 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (WinterQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
                (courseTimeString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseTimeString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
@@ -187,17 +187,17 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (SpringQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
                (courseOfficeHoursString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseOfficeHoursString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is office hours for cs 348 in spring 2020?"
+     "When is office hours for cs 348 in spring quarter 2020?"
      "What time is office hours for cs 349 in spring 2020?"
-     "What time does office hours begin for cs 348 in spring 2020?"
+     "What time does office hours begin for cs 348 in spring quarter 2020?"
      "What time does office hours end for cs 349 in spring 2020?"
-     "How long are office hours for cs 349 in spring 2020?"
+     "How long are office hours for cs 349 in spring quarter 2020?"
      ))
 
      ;; Summer Quarter 2020 - Office Hours
@@ -206,15 +206,15 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (SummerQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
                (courseOfficeHoursString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseOfficeHoursString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is office hours for cs 349 in summer 2020?"
+     "When is office hours for cs 349 in summer quarter 2020?"
      "What time is office hours for cs 349 in summer 2020?"
-     "What time does office hours begin for cs 349 in summer 2020?"
+     "What time does office hours begin for cs 349 in summer quarter 2020?"
      "What time does office hours end for cs 349 in summer 2020?"
      "How long are office hours for cs 349 in summer 2020?"
      ))
@@ -224,17 +224,17 @@
      (:lf (and (courseOffering course123 class123)
                (courseTerm course123 (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
                (courseOfficeHoursString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseOfficeHoursString course123 time123)))
           (isa time123 StringObject)
           (isa course123 NUCourse)
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is office hours for cs 348 in fall 2020?"
-     "What time is office hours for cs 349 in fall 2020?"
-     "What time does office hours begin for cs 348 in fall 2020?"
-     "What time does office hours end for cs 349 in fall 2020?"
-     "How long are office hours for cs 349 in fall 2020?"
+     "When is office hours for cs 325 in fall quarter 2020?"
+     "What time is office hours for cs 376 in fall quarter 2020?"
+     "What time does office hours begin for cs 325 in fall 2020?"
+     "What time does office hours end for cs 376 in fall 2020?"
+     "How long are office hours for cs 376 in fall 2020?"
      ))
 
      ;; Winter Quarter 2020 - Office Hours
@@ -249,11 +249,11 @@
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is cs 348 office hours in winter 2021?"
-     "What time is cs 349 office hours in winter 2021?"
-     "What time does office hours begin for cs 348 in winter 2021?"
-     "What time does office hours end for cs 348 in winter 2021?"
-     "How long are office hours for cs 349 in winter 2021?"
+     "When is cs 337 office hours in winter quarter 2021?"
+     "What time is cs 371 office hours in winter 2021?"
+     "What time does office hours begin for cs 337 in winter 2021?"
+     "What time does office hours end for cs 337 in winter 2021?"
+     "How long are office hours for cs 371 in winter quarter 2021?"
      ))
 ))
 
@@ -266,7 +266,7 @@
                (courseOffering course123 class123)
                (courseTerm course123 quarter123)
                (courseInstructor course123 person123)
-               (psikiSayThis person123))
+               (psikiSayThis (courseInstructor course123 person123)))
           (isa quarter123 AcademicQuarter)
           (isa person123 NUPerson) ; CSFaculty is too restrictive.
           (isa course123 NUCourse)
@@ -285,7 +285,7 @@
                (courseOffering course123 class123)
                (courseTerm course123 quarter123)
                (courseOfficeHoursString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseOfficeHoursString course123 time123)))
           (isa time123 StringObject)
           (isa quarter123 AcademicQuarter)
           (isa course123 NUCourse)
@@ -304,7 +304,7 @@
                (courseOffering course123 class123)
                (courseTerm course123 quarter123)
                (courseTimeString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseTimeString course123 time123)))
           (isa time123 StringObject)
           (isa quarter123 AcademicQuarter)
           (isa course123 NUCourse)
@@ -323,7 +323,7 @@
                (courseOffering course123 class123)
                (courseTerm course123 nextQuarter123)
                (courseInstructor course123 person123)
-               (psikiSayThis person123))
+               (psikiSayThis (courseInstructor course123 person123)))
           (isa currentQuarter123 AcademicQuarter)
           (isa nextQuarter123 AcademicQuarter)
           (isa person123 NUPerson) ; CSFaculty is too restrictive.
@@ -344,7 +344,7 @@
                (courseOffering course123 class123)
                (courseTerm course123 nextQuarter123)
                (courseOfficeHoursString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseOfficeHoursString course123 time123)))
           (isa time123 StringObject)
           (isa currentQuarter123 AcademicQuarter)
           (isa nextQuarter123 AcademicQuarter)
@@ -364,7 +364,7 @@
                (courseOffering course123 class123)
                (courseTerm course123 nextQuarter123)
                (courseTimeString course123 time123)
-               (psikiSayThis time123))
+               (psikiSayThis (courseTimeString course123 time123)))
           (isa time123 StringObject)
           (isa currentQuarter123 AcademicQuarter)
           (isa nextQuarter123 AcademicQuarter)

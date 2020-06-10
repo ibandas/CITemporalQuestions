@@ -1,3 +1,4 @@
+;; Office Hours assertions for Spring Quarter
 (in-microtheory (CoursesMtFn (SpringQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2019)))))
 
 (courseOfficeHoursString (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence
@@ -10,7 +11,26 @@
       (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
       "Mondays from 12:00 to 2:00")
 
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-394-AgileSoftwareDevelopment
+    (SpringQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
+  "Mondays from 11:00 to 12:00")
 
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-330-HumanComputerInteraction
+    (SpringQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
+  "Thursdays from 1:00 to 3:00")
+
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-345-DistributedSystems
+    (SpringQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2019))))
+  "Fridays from 9:00 to 10:00")
+
+
+;; Office Hours assertions for Fall Quarter
 (in-microtheory (CoursesMtFn (FallQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020)))))
 
 (courseOfficeHoursString (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence
@@ -23,7 +43,25 @@
       (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
       "Mondays from 5:00 to 6:00")
 
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-325-1-ArtificialIntelligenceProgramming
+    (FallQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+  "Mondays, Wednesdays, and Fridays from 12:00 to 1:00")
 
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-330-HumanComputerInteraction
+    (FallQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+  "Fridays from 10:00 to 11:00")
+
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-376-GameDesignAndDevelopment
+    (FallQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+  "Mondays from 4:00 to 6:00")
+
+;; Office Hours assertions for Winter Quarter
 (in-microtheory (CoursesMtFn (WinterQuarterFn (AcademicYearFn NorthwesternUniversity (YearFn 2020)))))
 
 (courseOfficeHoursString (CourseOfferingFn COMP_SCI-348-IntroductionToArtificialIntelligence
@@ -36,7 +74,27 @@
       (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
       "Wednesdays from 5:00 to 6:00")
 
+(courseOfficeHoursString
+  (CourseOfferingFn
+    COMP_SCI-337-IntroductionToNaturalLanguageProcessing
+    (WinterQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+  "Monday and Wednesday from 5:00 to 6:00")
 
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-371-KnowledgeRepresentationAndReasoning
+    (WinterQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+  "Tuesday and Thursday from 3:30 to 5:00")
+
+(courseOfficeHoursString
+  (CourseOfferingFn COMP_SCI-377-GameDevelopmentStudio
+    (WinterQuarterFn
+      (AcademicYearFn NorthwesternUniversity (YearFn 2020))))
+  "Monday and Wednesday from 5:00 to 6:00")
+
+
+;; Assertions needed for relative time
 (in-microtheory CoursesForSocialModelingMt)
 
 (currentNUQuarter FallQuarterFn)
@@ -81,7 +139,28 @@
   (and (isa :NOUN nextNUQuarter-Temporal)) (frame FN_Misc)
   (bindingTemplate (TheList)) (groupPatterns (TheSet)))
 
+
+  (FNNounSemtrans (TheList spring) Quarter-TheWord
+  (and (isa :NOUN SpringQuarterFn)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+  (FNNounSemtrans (TheList summer) Quarter-TheWord
+  (and (isa :NOUN SummerQuarterFn)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+  (FNNounSemtrans (TheList fall) Quarter-TheWord
+  (and (isa :NOUN FallQuarterFn)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
+  (FNNounSemtrans (TheList winter) Quarter-TheWord
+  (and (isa :NOUN WinterQuarterFn)) (frame FN_Misc)
+  (bindingTemplate (TheList)) (groupPatterns (TheSet)))
+
 (FNNounSemtrans (TheList office) Hour-TheWord
   (and (isa :NOUN courseOfficeHoursString)) (frame FN_Misc)
   (bindingTemplate (TheList)) (groupPatterns (TheSet)))
 
+
+(in-microtheory SocialModelingEnglishMt)
+
+(genFormat courseOfficeHoursString "~A meets for office hours at ~A" (TheList 1 2))
