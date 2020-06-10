@@ -193,7 +193,7 @@
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is office hours for cs 348 in spring quarter 2020?"
+     "When are office hours for cs 348 in spring quarter 2020?"
      "What time is office hours for cs 349 in spring 2020?"
      "What time does office hours begin for cs 348 in spring quarter 2020?"
      "What time does office hours end for cs 349 in spring 2020?"
@@ -212,7 +212,7 @@
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is office hours for cs 349 in summer quarter 2020?"
+     "When are office hours for cs 349 in summer quarter 2020?"
      "What time is office hours for cs 349 in summer 2020?"
      "What time does office hours begin for cs 349 in summer quarter 2020?"
      "What time does office hours end for cs 349 in summer 2020?"
@@ -230,7 +230,7 @@
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is office hours for cs 325 in fall quarter 2020?"
+     "When are office hours for cs 325 in fall quarter 2020?"
      "What time is office hours for cs 376 in fall quarter 2020?"
      "What time does office hours begin for cs 325 in fall 2020?"
      "What time does office hours end for cs 376 in fall 2020?"
@@ -249,7 +249,7 @@
           (isa class123 NUClass))
      (:settings . ((:use-gen-antec-isas NUPeopleDataMt)))
      (:texts
-     "When is cs 337 office hours in winter quarter 2021?"
+     "When are cs 337 office hours in winter quarter 2021?"
      "What time is cs 371 office hours in winter 2021?"
      "What time does office hours begin for cs 337 in winter 2021?"
      "What time does office hours end for cs 337 in winter 2021?"
